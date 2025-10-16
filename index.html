@@ -77,7 +77,7 @@
             <a href="#tokenomics" class="navbar13_link w-nav-link">Tokenomics</a>
             <a href="#how-to-buy" class="navbar13_link w-nav-link">How to buy</a>
             <div class="socials navbar13_link">
-              <a href="#" class="socials-icon twitter-link w-inline-block">
+              <a href="#" class="socials-icon twitter-link w-inline-block" target="_blank">
                 <div class="socials-code w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="auto"
                     fill="currentColor" class="bi bi-twitter-x" viewbox="0 0 16 16">
                     <path
@@ -85,7 +85,7 @@
                     </path>
                   </svg></div>
               </a>
-              <a href="#" class="socials-icon telegram-link w-inline-block">
+              <a href="#" class="socials-icon telegram-link w-inline-block" target="_blank">
                 <div class="socials-code w-embed">
                   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                   <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -120,7 +120,7 @@
                   </svg>
                 </div>
               </a>
-              <a href="#" class="socials-icon dexscreener-link w-inline-block">
+              <a href="#" class="socials-icon dexscreener-link w-inline-block" target="_blank">
                 <div class="socials-code w-embed">
                   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                   <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -479,7 +479,7 @@
                   </svg>
                 </div>
               </a>
-              <a href="#" class="socials-icon chart-link w-inline-block">
+              <a href="#" class="socials-icon dextools-link w-inline-block" target="_blank">
                 <div class="socials-code w-embed">
                   <?xml version="1.0" encoding="UTF-8" standalone="no"?>
                   <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
@@ -1066,7 +1066,7 @@
     <div class="links-code w-embed w-script">
       <script>
         (() => {
-          const contractAddress = "0x00000000000000000000000000000000000000"; // Replace with actual
+          const contractAddress = "0xb67823009a50829c837f69814916125c0a73c605"; // Replace with actual
           const contractAddressShort = `${contractAddress.slice(0, 6)}…${contractAddress.slice(-4)}`;
           // Tight validators
           const isEthereumAddress = /^0x[a-fA-F0-9]{40}$/.test(contractAddress);
@@ -1097,9 +1097,10 @@
             });
             if (isEthereumAddress) {
               $(".chart-link").attr("href",
-                `https://dexscreener.com/bsc/0x00000000000000000000000000000000000000`);
+                `https://dexscreener.com/bsc/0xb67823009a50829c837f69814916125c0a73c605`);
               $(".buy-link").attr("href", `https://app.uniswap.org/#/swap?outputCurrency=${contractAddress}`);
               $(".dexscreener-link").attr("href", `https://dexscreener.com/bsc/${contractAddress}`);
+              $(".dextools-link").attr("href", `https://www.dextools.io/app/en/bnb/pair-explorer/0x2b3595f4854581edc1cd940e5ee8c11092bb8410?t=1760586196557`);
               $(".etherscan-link").attr("href", `https://etherscan.io/address/${contractAddress}`);
               $("#iframe-chart").attr("src",
                 `https://dexscreener.com/ethereum/${contractAddress}?embed=1&theme=dark&trades=0&info=0`);
