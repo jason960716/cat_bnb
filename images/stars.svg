@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 1200 800"
+  width="100%"
+  height="100%"
+  preserveAspectRatio="xMidYMid slice"
+  role="img"
+  aria-labelledby="title desc">
+
+  <title id="title">Animated SVG Starfield</title>
+  <desc id="desc">A layered, animated starfield with twinkling stars, slow parallax drift, and occasional shooting stars.</desc>
+
+  <defs>
+    <!-- Theme -->
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#040212"/>
+      <stop offset="60%" stop-color="#070a1d"/>
+      <stop offset="100%" stop-color="#0b0f2e"/>
+    </linearGradient>
+
+    <!-- Soft glow for stars -->
+    <filter id="glow" x="-300%" y="-300%" width="600%" height="600%">
+      <feGaussianBlur stdDeviation="0.9" />
+    </filter>
+
+    <!-- Star symbol (scaled per instance) -->
+    <symbol id="star" overflow="visible">
+      <g filter="url(#glow)">
+        <circle r="1.05" fill="#fff"/>
+      </g>
+    </symbol>
+
+    <!-- Shooting star symbol -->
+    <symbol id="shooting" overflow="visible">
+      <g opacity="0.95">
+        <line x1="-28" y1="0" x2="0" y2="0" stroke="#fff" stroke-width="1.2" stroke-linecap="round" />
+        <circle r="1.8" fill="#fff"/>
+      </g>
+    </symbol>
+
+    <style><![CDATA[
+      :root {
+        --twinkle-min-1: .15;
+        --twinkle-min-2: .10;
+        --twinkle-min-3: .05;
+      }
+
+      .layer use {
+        animation: twinkle 6.5s ease-in-out infinite;
+      }
+
+      /* Vary twinkle speed + minimum opacity by depth */
+      .far   use { animation-duration: 7.5s; }
+      .mid   use { animation-duration: 6.5s; }
+      .near  use { animation-duration: 5.5s; }
+
+      .far   use { --min: var(--twinkle-min-1); }
+      .mid   use { --min: var(--twinkle-min-2); }
+      .near  use { --min: var(--twinkle-min-3); }
+
+      /* Stagger the starts for "randomness" */
+      .t1 { animation-delay: -0.2s; }
+      .t2 { animation-delay: -1.1s; }
+      .t3 { animation-delay: -2.0s; }
+      .t4 { animation-delay: -2.9s; }
+      .t5 { animation-delay: -3.8s; }
+      .t6 { animation-delay: -4.7s; }
+      .t7 { animation-delay: -5.6s; }
+      .t8 { animation-delay: -0.9s; }
+
+      @keyframes twinkle {
+        0%, 100% { opacity: var(--min, .1); }
+        50%      { opacity: 1; }
+      }
+
+      /* Accessibility: respect reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .layer use, .drift, .meteor { animation: none !important; }
+      }
+    ]]></style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)" />
+
+  <!-- FAR LAYER (small, slow) -->
+  <g class="layer far">
+    <animateTransform class="drift" attributeName="transform" type="translate"
+                      from="0 0" to="-220 0" dur="180s" repeatCount="indefinite" />
+    <!-- 24 stars -->
+    <use xlink:href="#star" transform="translate(  35  70)  scale(0.8)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 140 120) scale(0.7)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 260  60) scale(0.8)" class="t3"/>
+    <use xlink:href="#star" transform="translate( 360 160) scale(0.6)" class="t4"/>
+    <use xlink:href="#star" transform="translate( 460  90) scale(0.7)" class="t5"/>
+    <use xlink:href="#star" transform="translate( 560  30) scale(0.8)" class="t6"/>
+    <use xlink:href="#star" transform="translate( 660 140) scale(0.7)" class="t7"/>
+    <use xlink:href="#star" transform="translate( 760  80) scale(0.8)" class="t8"/>
+    <use xlink:href="#star" transform="translate( 860  50) scale(0.6)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 980 110) scale(0.7)" class="t2"/>
+    <use xlink:href="#star" transform="translate(1090  75) scale(0.8)" class="t3"/>
+
+    <use xlink:href="#star" transform="translate(  80 260) scale(0.6)" class="t4"/>
+    <use xlink:href="#star" transform="translate( 200 220) scale(0.7)" class="t5"/>
+    <use xlink:href="#star" transform="translate( 320 300) scale(0.8)" class="t6"/>
+    <use xlink:href="#star" transform="translate( 420 260) scale(0.6)" class="t7"/>
+    <use xlink:href="#star" transform="translate( 520 210) scale(0.7)" class="t8"/>
+    <use xlink:href="#star" transform="translate( 630 240) scale(0.8)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 740 280) scale(0.6)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 860 230) scale(0.7)" class="t3"/>
+    <use xlink:href="#star" transform="translate( 960 260) scale(0.8)" class="t4"/>
+    <use xlink:href="#star" transform="translate(1070 220) scale(0.6)" class="t5"/>
+
+    <use xlink:href="#star" transform="translate( 150 360) scale(0.8)" class="t6"/>
+    <use xlink:href="#star" transform="translate( 480 360) scale(0.7)" class="t7"/>
+    <use xlink:href="#star" transform="translate( 820 360) scale(0.8)" class="t8"/>
+  </g>
+
+  <!-- MID LAYER (medium, medium speed) -->
+  <g class="layer mid">
+    <animateTransform class="drift" attributeName="transform" type="translate"
+                      from="0 0" to="-300 0" dur="120s" repeatCount="indefinite" />
+    <!-- 18 stars -->
+    <use xlink:href="#star" transform="translate(  60  40) scale(1.0)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 210 100) scale(1.1)" class="t4"/>
+    <use xlink:href="#star" transform="translate( 330  40) scale(1.0)" class="t6"/>
+    <use xlink:href="#star" transform="translate( 480 130) scale(1.1)" class="t8"/>
+    <use xlink:href="#star" transform="translate( 600  80) scale(1.0)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 760 120) scale(1.1)" class="t3"/>
+    <use xlink:href="#star" transform="translate( 920  60) scale(1.0)" class="t5"/>
+    <use xlink:href="#star" transform="translate(1070 100) scale(1.1)" class="t7"/>
+
+    <use xlink:href="#star" transform="translate( 130 240) scale(1.1)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 280 210) scale(1.0)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 420 260) scale(1.1)" class="t3"/>
+    <use xlink:href="#star" transform="translate( 570 220) scale(1.0)" class="t4"/>
+    <use xlink:href="#star" transform="translate( 710 250) scale(1.1)" class="t5"/>
+    <use xlink:href="#star" transform="translate( 860 200) scale(1.0)" class="t6"/>
+    <use xlink:href="#star" transform="translate(1000 260) scale(1.1)" class="t7"/>
+
+    <use xlink:href="#star" transform="translate( 220 340) scale(1.0)" class="t8"/>
+    <use xlink:href="#star" transform="translate( 560 360) scale(1.1)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 940 360) scale(1.0)" class="t6"/>
+  </g>
+
+  <!-- NEAR LAYER (larger, faster) -->
+  <g class="layer near">
+    <animateTransform class="drift" attributeName="transform" type="translate"
+                      from="0 0" to="-420 0" dur="90s" repeatCount="indefinite" />
+    <!-- 12 stars -->
+    <use xlink:href="#star" transform="translate( 110  90) scale(1.35)" class="t3"/>
+    <use xlink:href="#star" transform="translate( 300  60) scale(1.45)" class="t5"/>
+    <use xlink:href="#star" transform="translate( 520 100) scale(1.35)" class="t7"/>
+    <use xlink:href="#star" transform="translate( 740  70) scale(1.55)" class="t1"/>
+    <use xlink:href="#star" transform="translate( 980  90) scale(1.40)" class="t4"/>
+
+    <use xlink:href="#star" transform="translate( 180 210) scale(1.55)" class="t2"/>
+    <use xlink:href="#star" transform="translate( 400 240) scale(1.40)" class="t6"/>
+    <use xlink:href="#star" transform="translate( 640 210) scale(1.55)" class="t8"/>
+    <use xlink:href="#star" transform="translate( 880 230) scale(1.45)" class="t3"/>
+
+    <use xlink:href="#star" transform="translate( 260 330) scale(1.50)" class="t5"/>
+    <use xlink:href="#star" transform="translate( 600 320) scale(1.40)" class="t7"/>
+    <use xlink:href="#star" transform="translate( 960 340) scale(1.55)" class="t2"/>
+  </g>
+
+  <!-- Shooting stars -->
+  <g class="meteor">
+    <g>
+      <use xlink:href="#shooting" />
+      <animateMotion dur="6s" begin="4s" repeatCount="indefinite" path="M 1300 130 L -100 270" rotate="auto" />
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.2;0.35;0.7;1" dur="6s" begin="4s" repeatCount="indefinite"/>
+    </g>
+    <g>
+      <use xlink:href="#shooting" />
+      <animateMotion dur="7.5s" begin="12s" repeatCount="indefinite" path="M 1250 40 L -100 140" rotate="auto" />
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.25;0.4;0.8;1" dur="7.5s" begin="12s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+</svg>
