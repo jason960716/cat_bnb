@@ -1066,7 +1066,7 @@
     <div class="links-code w-embed w-script">
       <script>
         (() => {
-          const contractAddress = "0x00000000000000000000000000000000000000"; // Replace with actual
+          const contractAddress = "0x587e7e6d4af3429c69bfbb2e078a50e07b904444"; // Replace with actual
           const contractAddressShort = `${contractAddress.slice(0, 6)}…${contractAddress.slice(-4)}`;
           // Tight validators
           const isEthereumAddress = /^0x[a-fA-F0-9]{40}$/.test(contractAddress);
@@ -1097,10 +1097,10 @@
             });
             if (isEthereumAddress) {
               $(".chart-link").attr("href",
-                `https://dexscreener.com/bsc/0x00000000000000000000000000000000000000`);
+                `https://dexscreener.com/bsc/0x587e7e6d4af3429c69bfbb2e078a50e07b904444`);
               $(".buy-link").attr("href", `https://app.uniswap.org/#/swap?outputCurrency=${contractAddress}`);
               $(".dexscreener-link").attr("href", `https://dexscreener.com/bsc/${contractAddress}`);
-              $(".dextools-link").attr("href", `https://www.dextools.io/app/en/bnb/pair-explorer/0xdex`);
+              $(".dextools-link").attr("href", `https://www.dextools.io/app/en/bnb/pair-explorer/0xd01c40e3c783b72088bc58c5a2e7de68da14ad2c?t=1761730963006`);
               $(".etherscan-link").attr("href", `https://etherscan.io/address/${contractAddress}`);
               $("#iframe-chart").attr("src",
                 `https://dexscreener.com/ethereum/${contractAddress}?embed=1&theme=dark&trades=0&info=0`);
